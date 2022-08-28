@@ -1,0 +1,25 @@
+import requests
+import bs4
+base_url = 'http://quotes.toscrape.com/'
+w = r'C:\Users\\Documents\ex.txt'
+two_star_titles = []
+
+
+
+res = requests.get(base_url)
+
+soup = bs4.BeautifulSoup(res.text, "lxml")
+books = soup.select(".author")
+quotes = []
+for quote in soup.select(".text"):
+    quotes.append(quote.text)
+
+for book in books:
+    two_star_titles.append(book.text)
+n = 0
+with open(w,'w') as f:
+    while n < len(two_star_titles):
+        for iw in quotes:
+            f.write(two_star_titles[n]+"-"+iw)
+            f.write('\n')
+            n= n+ 1
