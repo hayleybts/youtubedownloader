@@ -12,12 +12,12 @@ quotes = []
 for quote in soup.select(".text"):
     quotes.append(quote.text)
 k = random.choice(quotes)
-my_email = "learn32.test@gmail.com"
-password = 'ibkynhicxoqolzuf'
+my_email = "example@gmail.com"
+password = 'example'
 
 connection = smtplib.SMTP("smtp.gmail.com")
 connection.starttls()
 connection.login(user=my_email,password=password)
-connection.sendmail(from_addr=my_email,to_addrs="hayleym655@yahoo.com",
+connection.sendmail(from_addr=my_email,to_addrs="example@yahoo.com",
                     msg="Subject:Hii\n\n"+(str(k.encode('ascii', errors='ignore'))))
 connection.close()
